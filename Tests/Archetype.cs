@@ -1,6 +1,5 @@
 ﻿using Meep.Tech.Data.Configuration;
 using Meep.Tech.Data.Examples;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Meep.Tech.Data.Tests {
@@ -20,7 +19,6 @@ namespace Meep.Tech.Data.Tests {
         typeof(Item.Type)
       );
     }
-    
 
     [TestMethod]
     public void EqualityOpperator_Success() {

@@ -12,7 +12,7 @@ namespace Meep.Tech.Data.Examples {
       set;
     }
 
-    public abstract class Type : Archetype<Item, Item.Type> {
+    public abstract class Type : Archetype<Item, Item.Type>.WithAllDefaultModelBuilders {
 
       protected Type(Archetype.Identity id) 
         : base(id) {}

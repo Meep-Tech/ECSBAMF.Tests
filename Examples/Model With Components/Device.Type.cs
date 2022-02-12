@@ -4,7 +4,7 @@
     /// <summary>
     /// Device base archetype
     /// </summary>
-    public abstract class Type : Archetype<Device, Type> {
+    public abstract class Type : Archetype<Device, Type>, Archetype<Device, Type>.IExposeDefaultModelBuilderMakeMethods.Fully {
 
       protected Type(Identity id) 
         : base(id) {}

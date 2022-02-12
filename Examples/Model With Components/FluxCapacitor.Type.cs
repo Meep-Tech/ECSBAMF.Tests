@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meep.Tech.Collections.Generic;
+using System;
 using System.Collections.Generic;
 
 namespace Meep.Tech.Data.Examples {

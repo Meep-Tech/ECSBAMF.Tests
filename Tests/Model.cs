@@ -11,9 +11,8 @@ namespace Meep.Tech.Data.Tests {
     [TestMethod]
     public void ConstructionWithoutNeededParameter_Failure() {
       Assert.ThrowsException<IModel.Builder.Param.MissingException>(() => {
-        ModularFluxCapacitor device
-          = Device.Types.Get<ModularFluxCapacitor.Type>()
-            .Make<ModularFluxCapacitor>();
+        Device.Types.Get<ModularFluxCapacitor.Type>()
+          .Make();
       });
     }
 
@@ -24,7 +23,8 @@ namespace Meep.Tech.Data.Tests {
       public void AddComponentToModel_Success() {
         ModularFluxCapacitor device
           = Device.Types.Get<ModularFluxCapacitor.Type>()
-            .Make<ModularFluxCapacitor>((nameof(FluxCapacitor.FluxLevel), 30));
+            .DefaultModelBuilders()
+              .Make<ModularFluxCapacitor>((nameof(FluxCapacitor.FluxLevel), 30));
 
         ManufacturerDetails component =
           Components<ManufacturerDetails>.BuilderFactory
@@ -38,7 +38,9 @@ namespace Meep.Tech.Data.Tests {
       public void AddExistingComponentToModel_Failure() {
         ModularFluxCapacitor device
           = Device.Types.Get<ModularFluxCapacitor.Type>()
-            .Make<ModularFluxCapacitor>((nameof(FluxCapacitor.FluxLevel), 30));
+            .Make(out ModularFluxCapacitor _,
+              (nameof(FluxCapacitor.FluxLevel), 30)
+            );
 
         CapacitorData component =
           Components<CapacitorData>.BuilderFactory
@@ -53,7 +55,7 @@ namespace Meep.Tech.Data.Tests {
       public void AddRestrictedComponentToRestrictedModel_Success() {
         SafeModularDevice device
           = Device.Types.Get<SafeModularDevice.Type>()
-            .Make<SafeModularDevice>();
+            .Make(out SafeModularDevice _);
 
         ManufacturerDetails component =
           Components<ManufacturerDetails>.BuilderFactory.Make(
@@ -72,7 +74,8 @@ namespace Meep.Tech.Data.Tests {
       public void RemoveComponentFromWriteableModel_Success() {
         DangerousModularDevice device
           = Device.Types.Get<DangerousModularDevice.Type>()
-            .Make<DangerousModularDevice>();
+            .DefaultModelBuilders()
+              .Make<DangerousModularDevice>();
 
         ManufacturerDetails component =
           Components<ManufacturerDetails>.BuilderFactory
@@ -190,7 +193,8 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void ItemWithComponentsReserialization_Success() {
         ModularFluxCapacitor item = Device.Types.Get<ModularFluxCapacitor.Type>()
-          .Make<ModularFluxCapacitor>(("FluxLevel", 1));
+          .DefaultModelBuilders()
+            .Make<ModularFluxCapacitor>(("FluxLevel", 1));
         item.AddNewComponent<ManufacturerDetails>(
           (nameof(ManufacturerDetails.ManufacturerName), "test")
         );

@@ -9,13 +9,13 @@ namespace Meep.Tech.Data.Tests {
 
     [TestMethod]
     public void IsBaseFalse_Success() {
-      Assert.IsFalse(Apple.Id.Archetype.IsBase);
+      Assert.IsFalse(Apple.Id.Archetype.IsBaseArchetype);
     }
 
     [TestMethod]
     public void BaseTypeEqualsAbstract_Success() {
       Assert.AreEqual(
-        Apple.Id.Archetype.BaseType,
+        Apple.Id.Archetype.BaseArchetype,
         typeof(Item.Type)
       );
     }

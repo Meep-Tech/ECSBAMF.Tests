@@ -47,6 +47,17 @@ namespace Meep.Tech.Data.Tests.Tests {
     }
 
     [TestMethod]
+    public void GetFromUniverse_ByBasicObjectKey_Alt_Success() {
+      object key = nameof(TreeType.Poplar);
+      object externalId = TreeType.GetUniqueIdFromBaseObjectKey(key);
+
+      Assert.AreEqual(
+        TreeType.Poplar.ExternalId,
+        externalId
+      );
+    }
+
+    [TestMethod]
     public void AllContainsAny_IsTrue() {
       Assert.IsTrue(AnimalType.All.Contains(AnimalType.Frog));
     }

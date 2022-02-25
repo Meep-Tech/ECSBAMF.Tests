@@ -192,18 +192,18 @@ namespace Meep.Tech.Data.Tests {
 
       [TestMethod]
       public void ItemWithComponentsReserialization_Success() {
-        ModularFluxCapacitor item = Device.Types.Get<ModularFluxCapacitor.Type>()
+        ModularFluxCapacitor device = Device.Types.Get<ModularFluxCapacitor.Type>()
           .DefaultModelBuilders()
             .Make<ModularFluxCapacitor>(("FluxLevel", 1));
-        item.AddNewComponent<ManufacturerDetails>(
+        device.AddNewComponent<ManufacturerDetails>(
           (nameof(ManufacturerDetails.ManufacturerName), "test")
         );
 
-        JObject itemJson = item.ToJson();
+        JObject itemJson = device.ToJson();
 
         Device deserializedItem = (Device)IModel.FromJson(itemJson);
 
-        Assert.AreEqual(item.ToJson().ToString(), deserializedItem.ToJson().ToString());
+        Assert.AreEqual(device.ToJson().ToString(), deserializedItem.ToJson().ToString());
       }
     }
   }

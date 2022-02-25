@@ -1,12 +1,8 @@
 ﻿namespace Meep.Tech.Data.Examples {
   public struct CapacitorData 
-    : IModel.IComponent<CapacitorData>
+    : IModel.IComponent<CapacitorData>,
+      IComponent.IUseDefaultUniverse
   {
-
-    Universe IComponent.Universe {
-      get;
-      set;
-    }
 
     public int Value;
 

@@ -13,7 +13,7 @@
         // builder constructor is directly get/settable for factories as long as it's before archetype loading is done for this universe
         BuilderConstructor
           // here we use a light builder instead of a full one:
-          = (type, @params, universe) => new IComponent<Capacitor>.LiteBuilder(type, @params, universe) {
+          = (type, @params, universe) => new IComponent<Capacitor>.LiteBuilder(type, @params, null, universe) {
             // configure the model
             ConfigureModel = (builder, model) => {
               model.DefaultCapacityValue

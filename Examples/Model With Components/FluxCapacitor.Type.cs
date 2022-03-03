@@ -16,8 +16,8 @@ namespace Meep.Tech.Data.Examples {
           {nameof(FluxCapacitor.FluxLevel), 0 }
         };
 
-      protected override HashSet<IComponent> InitialComponents
-        => base.InitialComponents.Append(
+      protected override HashSet<IComponent> InitialComponents 
+        => _InitialComponents ??= base.InitialComponents.Append(
           Components<Capacitor>.BuilderFactory.Make()
         );
 

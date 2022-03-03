@@ -51,7 +51,7 @@ namespace Meep.Tech.Data.Examples {
 
       protected override Item ConfigureModel(IBuilder<Item> builder, Item model) {
         model = base.ConfigureModel(builder, model);
-        (model as Weapon)!.DamagePerHit = builder.GetParam(Param.DamagerPerHit, DefaultDamagePerHit);
+        (model as Weapon)!.DamagePerHit = builder.GetViaParam(Param.DamagerPerHit, DefaultDamagePerHit);
         return model;
       }
     }

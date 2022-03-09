@@ -5,6 +5,6 @@
       get;
     } = new Archetype<Item, Item.Type>.Identity("Apple");
 
-    Apple() : base(Id) {}
+    internal Apple() : base(Id) {}
   }
 }

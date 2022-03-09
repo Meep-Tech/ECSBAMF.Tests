@@ -1,6 +1,7 @@
 ﻿using Meep.Tech.Data.Configuration;
 using Meep.Tech.Data.Examples;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace Meep.Tech.Data.Tests {
 
@@ -97,6 +98,60 @@ namespace Meep.Tech.Data.Tests {
 
         new Loader(settings)
           .Initialize();
+      }
+
+      [TestMethod]
+      public void LoadTypeAfterSealing_Success() {
+        BeefJerkey newType = new BeefJerkey();
+        string _ = newType.ToString();
+        Assert.IsNotNull(Item.Types.Get<BeefJerkey>());
+      }
+
+      [TestMethod]
+      public void LoadTypeAfterSealingEqual_Success() {
+        Meep.Tech.Data.Archetype newType = new BeefJerkey();
+        Assert.AreEqual(newType.Id, Item.Types.Get(newType.GetType()).Id);
+      }
+
+      [TestMethod]
+      public void LoadTypeBeforeLoaded_Failure() {
+        Assert.ThrowsException<System.Collections.Generic.KeyNotFoundException>(
+         () => Item.Types.Get<BeefJerkey>()
+        );
+      }
+
+      [TestMethod]
+      public void LoadTypeAfterSealing_Failure() {
+        Assert.ThrowsException<System.InvalidOperationException>(
+         () => new Apple()
+        );
+      }
+    }
+
+    [TestClass]
+    public class Unloading {
+
+      [TestMethod]
+      public void UnloadedTypeNotFoundInTypesAll() {
+        FishTaco toUnload = Item.Types.Get<FishTaco>();
+        toUnload.Unload();
+        Assert.IsFalse(Item.Types.All.Contains(toUnload));
+      }
+
+      [TestMethod]
+      public void UnloadedTypeNotFoundInAllAll() {
+        FishTaco toUnload = Item.Types.Get<FishTaco>();
+        toUnload.Unload();
+        Assert.IsFalse(Archetypes.All.Contains(toUnload));
+      }
+
+      [TestMethod]
+      public void UnloadedTypeNotFoundStaticAccess() {
+        FishTaco toUnload = Item.Types.Get<FishTaco>();
+        toUnload.Unload();
+        Assert.ThrowsException<System.Collections.Generic.KeyNotFoundException>(
+         () => Archetypes<FishTaco>._
+        );
       }
     }
 

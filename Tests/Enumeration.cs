@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
-namespace Meep.Tech.Data.Tests.Tests {
+namespace Meep.Tech.Data.Tests {
 
   [TestClass]
   public class Enumeration {
@@ -29,6 +29,7 @@ namespace Meep.Tech.Data.Tests.Tests {
     [TestMethod]
     public void GetFromUniverse_Success() {
       var foundType = Archetypes.DefaultUniverse.Enumerations.Get(typeof(AnimalType), $"{nameof(AnimalType)}.{nameof(AnimalType.Frog)}");
+
       Assert.AreEqual(
         AnimalType.Frog,
         foundType

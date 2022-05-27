@@ -1,7 +1,7 @@
 ﻿namespace Meep.Tech.Data.Examples {
   public partial struct Capacitor 
     : Archetype.IComponent<Capacitor>, 
-      Archetype.ILinkedComponent<CapacitorData>, 
+      Archetype.IComponent.IAmLinkedTo<CapacitorData>, 
       IComponent.IUseDefaultUniverse
   {
 
@@ -33,7 +33,7 @@
     /// <summary>
     /// We set this the simplest way we can;
     /// </summary>
-    CapacitorData Archetype.ILinkedComponent<CapacitorData>.BuildDefaultModelComponent(
+    CapacitorData Archetype.IComponent.IAmLinkedTo<CapacitorData>.BuildDefaultModelComponent(
       IModel.Builder parentModelBuilder,
       Universe universe
     ) => new CapacitorData (

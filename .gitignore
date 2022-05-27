@@ -1,6 +1,4 @@
 /bin
 /obj
-/TestResults
-/.vs
 *.sln
-*.csproj
+post-build-copy.csproj

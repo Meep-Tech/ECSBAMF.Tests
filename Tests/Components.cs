@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 
-namespace Meep.Tech.Data.Tests.Tests {
+namespace Meep.Tech.Data.Tests {
   [TestClass]
   public class Components {
 

@@ -96,6 +96,9 @@ namespace Meep.Tech.Data.Tests {
           UniverseName = "Meep.Tech.ECSBAM.Tests"
         };
 
+        settings.ArchetypeAssemblyPrefixesToIgnore
+          .Remove("Meep.Tech.Data");
+
         new Loader(settings)
           .Initialize();
       }

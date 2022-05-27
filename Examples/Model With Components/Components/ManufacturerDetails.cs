@@ -3,7 +3,7 @@
 namespace Meep.Tech.Data.Examples {
   public partial struct ManufacturerDetails
     : IModel.IComponent<ManufacturerDetails>,
-      IModel.IRestrictedComponent<Device>,
+      IModel.IComponent.IIsRestrictedTo<Device>,
       IComponent.IUseDefaultUniverse
   {
 

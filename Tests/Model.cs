@@ -1,7 +1,10 @@
 ﻿using Meep.Tech.Data.Examples;
+using Meep.Tech.Data.Tests.Examples.AutoBuilder;
+using Meep.Tech.Data.Tests.Examples.Struct_Only_Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using System;
+using static Meep.Tech.Data.Tests.Examples.AutoBuilder.Animal;
 
 namespace Meep.Tech.Data.Tests {
 
@@ -92,6 +95,116 @@ namespace Meep.Tech.Data.Tests {
 
     [TestClass]
     public class Builder {
+
+      [TestClass]
+      public class Auto {
+
+        [TestMethod]
+        public void MakeWithAutoBuilderRequiredField_Snake_Name_Success() {
+          const string snakeName = "Snakey";
+          var snake = Animal.Types.Get<Snake>()
+            .Make<Animal>((nameof(Animal.Name), snakeName));
+
+          Assert.AreEqual(snakeName, snake.Name);
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderOverrideDefaultField_Snake_NumberOfLegs_Success() {
+          const string snakeName = "Snakey";
+          var snake = Animal.Types.Get<Snake>()
+            .Make((nameof(Animal.Name), snakeName), (nameof(Animal.NumberOfLegs), 1));
+
+          Assert.AreEqual(1, snake.NumberOfLegs);
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderOverrideDefaultField_Snake_CanClimb_Success() {
+          const string snakeName = "Snakey";
+          var snake = Animal.Types.Get<Snake>()
+            .Make((nameof(Animal.Name), snakeName), (nameof(Animal.IsAClimber), false));
+
+          Assert.AreEqual(false, snake.IsAClimber);
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderDefaultField_Snake_CanClimb_Success() {
+          const string snakeName = "Snakey";
+          var snake = Animal.Types.Get<Snake>()
+            .Make((nameof(Animal.Name), snakeName));
+
+          Assert.AreEqual(snake.Archetype.CanClimb, snake.IsAClimber);
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderOverrideDefaultField_Snake_NumberOfLegs_Failure() {
+          const string snakeName = "Snakey";
+          Assert.ThrowsException<ArgumentException>(() =>
+            Animal.Types.Get<Snake>()
+              .Make((nameof(Animal.Name), snakeName), (nameof(Animal.NumberOfLegs), -1)));
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderDefaultField_Snake_NumberOfLegs_Success() {
+          const string snakeName = "Snakey";
+          var snake = Animal.Types.Get<Snake>()
+            .Make<Animal>((nameof(Animal.Name), snakeName));
+
+          Assert.AreEqual(snake.Archetype.DefaultNumberOfLegs, snake.NumberOfLegs);
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderRequiredFieldMissing_Snake_Name_Failure() {
+          Assert.ThrowsException<IModel.Builder.Param.MissingException>(() => 
+            Animal.Types.Get<Snake>()
+              .Make<Animal>());
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderVirtualDefaultField_Cat_Name_Success() {
+          var cat = Animal.Types.Get<Cat.Type>()
+            .Make<Animal>();
+
+          Assert.AreEqual("Kitty", cat.Name);
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderVirtualOverrideDefaultField_Cat_Name_Success() {
+          const string catName = "Mowster";
+          var cat = Animal.Types.Get<Cat.Type>()
+            .Make<Animal>((nameof(Animal.Name), catName));
+
+          Assert.AreEqual(catName, cat.Name);
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderAttributeDefaultField_Dog_Name_Success() {
+          var dog = Animal.Types.Get<Dog.Type>()
+            .Make<Animal>();
+
+          Assert.AreEqual("Friend", dog.Name);
+        }
+
+        [TestMethod]
+        public void MakeWithAutoBuilderAttributeOverrideDefaultField_Dog_Name_Success() {
+          const string dogName = "goofy";
+          var dog = Animal.Types.Get<Dog.Type>()
+            .Make<Animal>((nameof(Animal.Name), dogName));
+
+          Assert.AreEqual(dogName, dog.Name);
+        }
+      }
+
+      [TestMethod]
+      public void MakesModelWithCorrectArchetype_DoubleGeneric_ClassBased() {
+        var apple = Archetypes<Apple>._.Make();
+        Assert.AreEqual(Archetypes<Apple>._, apple.Archetype);
+      }
+
+      [TestMethod]
+      public void MakesModelWithCorrectArchetype_DoubleGeneric_FromInterface() {
+        var grassTile = Tile.Types.Get<Grass>().Make();
+        Assert.AreEqual(Archetypes<Grass>._, grassTile.Archetype);
+      }
 
       [TestMethod]
       public void MakeNewBuilderAndCopyParamsTest() {

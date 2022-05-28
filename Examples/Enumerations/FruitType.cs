@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Meep.Tech.Data.Configuration;
 
 namespace Meep.Tech.Data.Tests.Examples.Enumerations {
   public class FruitType : Enumeration<FruitType> {
@@ -18,7 +19,7 @@ namespace Meep.Tech.Data.Tests.Examples.Enumerations {
       : base(name) {}
   }
 
-  [Configuration.Loader.Settings.BuildAllDeclaredEnumValuesOnInitialLoad]
+  [BuildAllDeclaredEnumValuesOnInitialLoad]
   public static class AdditionalFruitTypes {
 
     public static FruitType Melon { get; }

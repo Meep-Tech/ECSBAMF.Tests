@@ -1,7 +1,10 @@
 ﻿using Meep.Tech.Data.Configuration;
 using Meep.Tech.Data.Examples;
+using Meep.Tech.Data.Tests.Examples.AutoBuilder;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Linq;
+using static Meep.Tech.Data.Tests.Examples.AutoBuilder.Animal;
 
 namespace Meep.Tech.Data.Tests {
 
@@ -355,6 +358,7 @@ namespace Meep.Tech.Data.Tests {
     [TestClass]
     public class Make {
 
+
       [TestMethod]
       public void MakeDefaultBasic_Success() {
         Item made = Archetypes<Apple>._.Make();
@@ -481,5 +485,10 @@ namespace Meep.Tech.Data.Tests {
         15
       );
     }
+
+    [TestMethod]
+    public void MakeModelFromWrongBranch_Failure()
+      => Assert.ThrowsException<InvalidCastException>(
+        () => Animal.Types.Get<Snake>().Make<Dog>((nameof(Animal.Name), "Doggo?")));
   }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using static Meep.Tech.Data.Configuration.Loader.Settings;
+using Meep.Tech.Data.Configuration;
 
 namespace Meep.Tech.Data.Examples {
 

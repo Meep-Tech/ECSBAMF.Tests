@@ -126,7 +126,7 @@ namespace Meep.Tech.Data.Tests.Examples.AutoBuilder {
         Name = "Friend";
       }
 
-      [Configuration.Loader.Settings.Branch]
+      [Configuration.Branch]
       public new class Type : Animal.Type {
         public override int DefaultNumberOfLegs
           => 4;
@@ -148,7 +148,7 @@ namespace Meep.Tech.Data.Tests.Examples.AutoBuilder {
       protected Cat(IBuilder<Animal> builder) 
         : base(builder) {}
 
-      [Configuration.Loader.Settings.Branch]
+      [Configuration.Branch]
       public new class Type : Animal.Type {
         public override int DefaultNumberOfLegs
           => 4;

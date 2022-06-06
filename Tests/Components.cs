@@ -1,4 +1,4 @@
-﻿using Meep.Tech.Data.Examples;
+﻿using Meep.Tech.Data.Examples.ModelWithComponents;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 

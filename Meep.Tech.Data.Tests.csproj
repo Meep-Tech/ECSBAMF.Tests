@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Meep.Tech.Data.Examples\Meep.Tech.Data.Examples.csproj" />
     <ProjectReference Include="..\Meep.Tech.Data\Meep.Tech.Data.csproj" />
   </ItemGroup>
 

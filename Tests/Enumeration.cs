@@ -1,4 +1,4 @@
-﻿using Meep.Tech.Data.Tests.Examples.Enumerations;
+﻿using Meep.Tech.Data.Examples.Enumerations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 

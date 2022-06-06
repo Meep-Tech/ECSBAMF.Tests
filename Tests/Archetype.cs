@@ -1,15 +1,16 @@
-﻿using Meep.Tech.Data.Configuration;
-using Meep.Tech.Data.Examples;
-using Meep.Tech.Data.Tests.Examples.AutoBuilder;
+﻿using Meep.Tech.Data.Examples.AutoBuilder;
+using Meep.Tech.Data.Examples.ModelWithArchetypes;
+using Meep.Tech.Data.Examples.ModelWithComponents;
+using Meep.Tech.Data.Examples.UnloadableArchetypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
-using static Meep.Tech.Data.Tests.Examples.AutoBuilder.Animal;
+using static Meep.Tech.Data.Examples.AutoBuilder.Animal;
 
 namespace Meep.Tech.Data.Tests {
 
   [TestClass]
-  public class Archetype {
+  public partial class Archetype {
 
     [TestMethod]
     public void IsBaseFalse_Success() {
@@ -78,7 +79,7 @@ namespace Meep.Tech.Data.Tests {
       /// </summary>
       [TestMethod]
       public void StaticIdGet_Success() {
-        Assert.AreEqual("Meep.Tech.Data.Examples.Item.Apple", Apple.Id.Key);
+        Assert.AreEqual("Meep.Tech.Data.Examples.ModelWithArchetypes.Item.Apple", Apple.Id.Key);
       }
 
       /// <summary>
@@ -86,51 +87,7 @@ namespace Meep.Tech.Data.Tests {
       /// </summary>
       [TestMethod]
       public void StaticIdGetFromString_Success() {
-        Assert.AreEqual("Meep.Tech.Data.Examples.Item.Apple", Archetypes.Id["Meep.Tech.Data.Examples.Item.Apple"].Key);
-      }
-    }
-
-    [TestClass]
-    public class Loading {
-
-      [AssemblyInitialize]
-      public static void Initialize(TestContext _) {
-        Loader.Settings settings = new Loader.Settings() {
-          UniverseName = "Meep.Tech.ECSBAM.Tests"
-        };
-
-        settings.ArchetypeAssemblyPrefixesToIgnore
-          .Remove("Meep.Tech.Data");
-
-        new Loader(settings)
-          .Initialize();
-      }
-
-      [TestMethod]
-      public void LoadTypeAfterSealing_Success() {
-        BeefJerkey newType = new BeefJerkey();
-        string _ = newType.ToString();
-        Assert.IsNotNull(Item.Types.Get<BeefJerkey>());
-      }
-
-      [TestMethod]
-      public void LoadTypeAfterSealingEqual_Success() {
-        Meep.Tech.Data.Archetype newType = new BeefJerkey();
-        Assert.AreEqual(newType.Id, Item.Types.Get(newType.GetType()).Id);
-      }
-
-      [TestMethod]
-      public void LoadTypeBeforeLoaded_Failure() {
-        Assert.ThrowsException<System.Collections.Generic.KeyNotFoundException>(
-         () => Item.Types.Get<BeefJerkey>()
-        );
-      }
-
-      [TestMethod]
-      public void LoadTypeAfterSealing_Failure() {
-        Assert.ThrowsException<System.InvalidOperationException>(
-         () => new Apple()
-        );
+        Assert.AreEqual("Meep.Tech.Data.Examples.ModelWithArchetypes.Item.Apple", Archetypes.Id["Meep.Tech.Data.Examples.ModelWithArchetypes.Item.Apple"].Key);
       }
     }
 
@@ -177,11 +134,11 @@ namespace Meep.Tech.Data.Tests {
       public void GetByStaticId_Success() {
         Assert.AreEqual(
           Apple.Id.Archetype.Id.Key,
-          "Meep.Tech.Data.Examples.Item.Apple"
+          "Meep.Tech.Data.Examples.ModelWithArchetypes.Item.Apple"
         );
         Assert.AreEqual(
           Sword.Id.Key,
-          "Meep.Tech.Data.Examples.Item.Weapon.Sword"
+          "Meep.Tech.Data.Examples.ModelWithArchetypes.Item.Weapon.Sword"
         );
       }
 
@@ -214,7 +171,7 @@ namespace Meep.Tech.Data.Tests {
         public void GetByExternalId_Success() {
           Assert.AreEqual(
             Apple.Id.Archetype,
-            Item.Types.Get("Meep.Tech.Data.Examples.Item.Apple")
+            Item.Types.Get("Meep.Tech.Data.Examples.ModelWithArchetypes.Item.Apple")
           );
         }
 
@@ -489,6 +446,6 @@ namespace Meep.Tech.Data.Tests {
     [TestMethod]
     public void MakeModelFromWrongBranch_Failure()
       => Assert.ThrowsException<InvalidCastException>(
-        () => Animal.Types.Get<Snake>().Make<Dog>((nameof(Animal.Name), "Doggo?")));
+        () => Animal.Types.Get<Animal.Snake>().Make<Dog>((nameof(Animal.Name), "Doggo?")));
   }
 }

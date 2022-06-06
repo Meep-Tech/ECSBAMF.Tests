@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Meep.Tech.Data.Examples {
+﻿namespace Meep.Tech.Data.Examples {
 
   /*public class Test : Model<Test, Test.Type> {
     public class Type : Archetype<Test, Type> {

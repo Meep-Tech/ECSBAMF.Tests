@@ -1,10 +1,11 @@
-﻿using Meep.Tech.Data.Examples;
-using Meep.Tech.Data.Tests.Examples.AutoBuilder;
-using Meep.Tech.Data.Tests.Examples.Struct_Only_Models;
+﻿using Meep.Tech.Data.Examples.AutoBuilder;
+using Meep.Tech.Data.Examples.ModelWithArchetypes;
+using Meep.Tech.Data.Examples.ModelWithComponents;
+using Meep.Tech.Data.Examples.StructOnlyModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using System;
-using static Meep.Tech.Data.Tests.Examples.AutoBuilder.Animal;
+using static Meep.Tech.Data.Examples.AutoBuilder.Animal;
 
 namespace Meep.Tech.Data.Tests {
 

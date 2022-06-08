@@ -1,5 +1,7 @@
 ﻿using Meep.Tech.Data.Configuration;
+using Meep.Tech.Data.Examples.Enumerations;
 using Meep.Tech.Data.Examples.ModelWithArchetypes;
+using Meep.Tech.Data.Examples.SplayedArchetype;
 using Meep.Tech.Data.Examples.UnloadableArchetypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -48,6 +50,16 @@ namespace Meep.Tech.Data.Tests {
       public void LoadTypeAfterSealing_Failure() {
         Assert.ThrowsException<System.InvalidOperationException>(
          () => new Apple("")
+        );
+      }
+
+      public void SplayedTypesLoadedOnInitialization_Success() {
+        Assert.AreEqual(
+          FruitType.Apple,
+          (Sticker.Types.Get<Sticker.Type>()
+            .For(FruitType.Apple) 
+              as Data.Archetype.IBuildOneForEach<FruitType, Sticker.Type>)
+                .AssociatedEnum
         );
       }
     }

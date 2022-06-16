@@ -9,7 +9,7 @@ using static Meep.Tech.Data.Examples.AutoBuilder.Animal;
 
 namespace Meep.Tech.Data.Tests {
 
-  [TestClass]
+	[TestClass]
   public partial class Model {
 
     [TestMethod]

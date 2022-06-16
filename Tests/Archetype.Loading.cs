@@ -19,9 +19,6 @@ namespace Meep.Tech.Data.Tests {
           }
         };
 
-        settings.ArchetypeAssemblyPrefixesToIgnore
-          .Remove("Meep.Tech.Data");
-
         new Loader(settings)
           .Initialize();
       }

@@ -1,0 +1,54 @@
+Could not initialize Model Type: Meep.Tech.Data.Examples.SplayedArchetype.Sticker, due to Internal Exception:
+
+Meep.Tech.Data.Configuration.Loader+FailedToConfigureNewModelException: Could not initialize Model of type Meep.Tech.Data.Examples.SplayedArchetype.Sticker due to Unknown Inner Exception.
+ ---> System.Collections.Generic.KeyNotFoundException: Could not find a Root Archetype for the Base Model Type: Meep.Tech.Data.Examples.SplayedArchetype.Sticker
+   at Meep.Tech.Data.Universe.ArchetypesData.GetDefaultForModelOfType(Type modelBaseType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Universes\Universe.ArchetypesData.cs:line 160
+   at Meep.Tech.Data.Configuration.Loader._testBuildDefaultModel(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 929
+   at Meep.Tech.Data.Configuration.Loader._registerModelType(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 707
+   at Meep.Tech.Data.Configuration.Loader._tryToInitializeModel(Type systemType, Exception& e) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 671
+   --- End of inner exception stack trace ---
+Could not initialize Model Type: Meep.Tech.Data.Examples.ModelWithComponents.DangerousModularDevice, due to Internal Exception:
+
+Meep.Tech.Data.Configuration.Loader+FailedToConfigureNewModelException: Could not initialize Model of type Meep.Tech.Data.Examples.ModelWithComponents.DangerousModularDevice due to Unknown Inner Exception.
+ ---> System.Collections.Generic.KeyNotFoundException: Could not find a Root Archetype for the Base Model Type: Meep.Tech.Data.Examples.ModelWithComponents.DangerousModularDevice
+   at Meep.Tech.Data.Universe.ArchetypesData.GetDefaultForModelOfType(Type modelBaseType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Universes\Universe.ArchetypesData.cs:line 160
+   at Meep.Tech.Data.Configuration.Loader._testBuildDefaultModel(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 929
+   at Meep.Tech.Data.Configuration.Loader._registerModelType(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 707
+   at Meep.Tech.Data.Configuration.Loader._tryToInitializeModel(Type systemType, Exception& e) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 671
+   --- End of inner exception stack trace ---
+Could not initialize Model Type: Meep.Tech.Data.Examples.ModelWithComponents.Device, due to Internal Exception:
+
+Meep.Tech.Data.Configuration.Loader+FailedToConfigureNewModelException: Could not initialize Model of type Meep.Tech.Data.Examples.ModelWithComponents.Device due to Unknown Inner Exception.
+ ---> System.Collections.Generic.KeyNotFoundException: Could not find a Root Archetype for the Base Model Type: Meep.Tech.Data.Examples.ModelWithComponents.Device
+   at Meep.Tech.Data.Universe.ArchetypesData.GetDefaultForModelOfType(Type modelBaseType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Universes\Universe.ArchetypesData.cs:line 160
+   at Meep.Tech.Data.Configuration.Loader._testBuildDefaultModel(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 929
+   at Meep.Tech.Data.Configuration.Loader._registerModelType(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 707
+   at Meep.Tech.Data.Configuration.Loader._tryToInitializeModel(Type systemType, Exception& e) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 671
+   --- End of inner exception stack trace ---
+Could not initialize Model Type: Meep.Tech.Data.Examples.ModelWithComponents.FluxCapacitor, due to Internal Exception:
+
+Meep.Tech.Data.Configuration.Loader+FailedToConfigureNewModelException: Could not initialize Model of type Meep.Tech.Data.Examples.ModelWithComponents.FluxCapacitor due to Unknown Inner Exception.
+ ---> System.Collections.Generic.KeyNotFoundException: Could not find a Root Archetype for the Base Model Type: Meep.Tech.Data.Examples.ModelWithComponents.FluxCapacitor
+   at Meep.Tech.Data.Universe.ArchetypesData.GetDefaultForModelOfType(Type modelBaseType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Universes\Universe.ArchetypesData.cs:line 160
+   at Meep.Tech.Data.Configuration.Loader._testBuildDefaultModel(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 929
+   at Meep.Tech.Data.Configuration.Loader._registerModelType(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 707
+   at Meep.Tech.Data.Configuration.Loader._tryToInitializeModel(Type systemType, Exception& e) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 671
+   --- End of inner exception stack trace ---
+Could not initialize Model Type: Meep.Tech.Data.Examples.ModelWithComponents.ModularFluxCapacitor, due to Internal Exception:
+
+Meep.Tech.Data.Configuration.Loader+FailedToConfigureNewModelException: Could not initialize Model of type Meep.Tech.Data.Examples.ModelWithComponents.ModularFluxCapacitor due to Unknown Inner Exception.
+ ---> System.Collections.Generic.KeyNotFoundException: Could not find a Root Archetype for the Base Model Type: Meep.Tech.Data.Examples.ModelWithComponents.ModularFluxCapacitor
+   at Meep.Tech.Data.Universe.ArchetypesData.GetDefaultForModelOfType(Type modelBaseType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Universes\Universe.ArchetypesData.cs:line 160
+   at Meep.Tech.Data.Configuration.Loader._testBuildDefaultModel(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 929
+   at Meep.Tech.Data.Configuration.Loader._registerModelType(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 707
+   at Meep.Tech.Data.Configuration.Loader._tryToInitializeModel(Type systemType, Exception& e) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 671
+   --- End of inner exception stack trace ---
+Could not initialize Model Type: Meep.Tech.Data.Examples.ModelWithArchetypes.Weapon, due to Internal Exception:
+
+Meep.Tech.Data.Configuration.Loader+FailedToConfigureNewModelException: Could not initialize Model of type Meep.Tech.Data.Examples.ModelWithArchetypes.Weapon due to Unknown Inner Exception.
+ ---> System.Collections.Generic.KeyNotFoundException: Could not find a Root Archetype for the Base Model Type: Meep.Tech.Data.Examples.ModelWithArchetypes.Weapon
+   at Meep.Tech.Data.Universe.ArchetypesData.GetDefaultForModelOfType(Type modelBaseType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Universes\Universe.ArchetypesData.cs:line 160
+   at Meep.Tech.Data.Configuration.Loader._testBuildDefaultModel(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 929
+   at Meep.Tech.Data.Configuration.Loader._registerModelType(Type systemType) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 707
+   at Meep.Tech.Data.Configuration.Loader._tryToInitializeModel(Type systemType, Exception& e) in C:\Users\super\Projects\meep-tech\libraries\c-sharp\ECSBAMF\Meep.Tech.Data\Configuration\Loader\Loader.cs:line 671
+   --- End of inner exception stack trace ---

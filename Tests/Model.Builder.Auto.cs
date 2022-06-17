@@ -48,7 +48,7 @@ namespace Meep.Tech.Data.Tests {
         [TestMethod]
         public void MakeWithAutoBuilderOverrideDefaultField_Snake_NumberOfLegs_Failure() {
           const string snakeName = "Snakey";
-          Assert.ThrowsException<ArgumentException>(() =>
+          Assert.ThrowsException<AutoBuildAttribute.Exception>(() =>
             Animal.Types.Get<Snake>()
               .Make((nameof(Animal.Name), snakeName), (nameof(Animal.NumberOfLegs), -1)));
         }
@@ -64,7 +64,7 @@ namespace Meep.Tech.Data.Tests {
 
         [TestMethod]
         public void MakeWithAutoBuilderRequiredFieldMissing_Snake_Name_Failure() {
-          Assert.ThrowsException<IModel.Builder.Param.MissingException>(() => 
+          Assert.ThrowsException<AutoBuildAttribute.Exception>(() => 
             Animal.Types.Get<Snake>()
               .Make<Animal>());
         }

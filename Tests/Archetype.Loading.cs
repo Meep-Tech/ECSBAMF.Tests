@@ -4,9 +4,11 @@ using Meep.Tech.Data.Examples.ModelWithArchetypes;
 using Meep.Tech.Data.Examples.SplayedArchetype;
 using Meep.Tech.Data.Examples.UnloadableArchetypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace Meep.Tech.Data.Tests {
   public partial class Archetype {
+
     [TestClass]
     public class Loading {
 
@@ -50,13 +52,23 @@ namespace Meep.Tech.Data.Tests {
         );
       }
 
+      [TestMethod]
       public void SplayedTypesLoadedOnInitialization_Success() {
         Assert.AreEqual(
           FruitType.Apple,
-          (Sticker.Types.Get<Sticker.Type>()
-            .For(FruitType.Apple) 
-              as Data.Archetype.IBuildOneForEach<FruitType, Sticker.Type>)
-                .AssociatedEnum
+          (Data.Archetype.ISplayed<FruitType, Sticker.Type>
+            .GetSplayedTypeForEnum(FruitType.Apple)
+            as Data.Archetype.ISplayed<FruitType,Sticker.Type>)
+              .AssociatedEnum
+        );
+      }
+
+      [TestMethod]
+      public void AllSplayedTypesLoaded_Success() {
+        Assert.AreEqual(
+          Archetypes.DefaultUniverse.Enumerations.GetAllByType(typeof(FruitType)).Count()
+          + Archetypes.DefaultUniverse.Enumerations.GetAllByType(typeof(TreeType)).Count(),
+          Archetypes.DefaultUniverse.Archetypes.TryToGetCollectionFor(typeof(Sticker.Type)).Count()
         );
       }
     }

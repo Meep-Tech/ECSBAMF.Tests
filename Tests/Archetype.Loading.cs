@@ -57,7 +57,7 @@ namespace Meep.Tech.Data.Tests {
         Assert.AreEqual(
           FruitType.Apple,
           (Data.Archetype.ISplayed<FruitType, Sticker.Type>
-            .GetSplayedTypeForEnum(FruitType.Apple)
+            .GetForValue(FruitType.Apple)
             as Data.Archetype.ISplayed<FruitType,Sticker.Type>)
               .AssociatedEnum
         );

@@ -12,7 +12,9 @@ namespace Meep.Tech.Data.Tests {
 
       [TestMethod]
       public void TestBuildModelFromFactory_User() {
-        var user = Models<User>.Factory.Make((nameof(User.Name), "tom"));
+        IModel<User>.BuilderFactory factory = Models<User>.Factory;
+
+        var user = factory.Make(((string key, object value))(nameof(User.Name), "tom"));
         Assert.IsInstanceOfType(user, typeof(User));
       }
 

@@ -18,7 +18,8 @@ namespace Meep.Tech.Data.Tests {
           UniverseName = "Meep.Tech.ECSBAM.Tests",
           PreLoadAssemblies = new() {
             typeof(Meep.Tech.Data.Examples.ModelWithArchetypes.Apple).Assembly
-          }
+          },
+          FatalDuringFinalizationOnCouldNotInitializeTypes = true
         };
 
         new Loader(settings)

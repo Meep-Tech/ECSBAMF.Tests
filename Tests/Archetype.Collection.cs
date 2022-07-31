@@ -17,7 +17,7 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void StaticCollectionForBaseModel_TypeIsCorrect() {
         Assert.IsInstanceOfType(
-          Archetypes.DefaultUniverse.Archetypes.GetCollectionFor(typeof(Item.Type)),
+          Archetypes.DefaultUniverse.Archetypes.GetCollection(typeof(Item.Type)),
           typeof(Archetype<Item, Item.Type>.Collection)
         );
       }

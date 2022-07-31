@@ -11,7 +11,7 @@ namespace Meep.Tech.Data.Tests {
       public void InitModelWithComponentFromArchetype_Success() {
         FluxCapacitor device
           = Device.Types.Get<FluxCapacitor.Type>()
-            .DefaultModelBuilders()
+            .GetDefaultBuilders()
               .Make<FluxCapacitor>((nameof(FluxCapacitor.FluxLevel), 30));
 
         Assert.IsTrue(device.HasComponent(Components<CapacitorData>.Key));
@@ -21,7 +21,7 @@ namespace Meep.Tech.Data.Tests {
       public void InitModelWithInheritedComponentFromArchetype_Success() {
         FluxCapacitor device
           = Device.Types.Get<PreBuiltCapacitor>()
-            .DefaultModelBuilders()
+            .GetDefaultBuilders()
               .Make<FluxCapacitor>((nameof(FluxCapacitor.FluxLevel), 30));
 
         Assert.IsTrue(device.HasComponent(Components<InfoComponent.Data>.Key));
@@ -31,7 +31,7 @@ namespace Meep.Tech.Data.Tests {
       public void InitModelWithInheritedComponentFromArchetypeDefaultValueGetter_Success() {
         FluxCapacitor device
           = Device.Types.Get<PreBuiltCapacitor>()
-            .DefaultModelBuilders()
+            .GetDefaultBuilders()
               .Make<FluxCapacitor>((nameof(FluxCapacitor.FluxLevel), 30));
 
         Assert.AreEqual("Default Info", device.GetComponent<InfoComponent.Data>().Text);
@@ -41,11 +41,11 @@ namespace Meep.Tech.Data.Tests {
       public void AddComponentToModel_Success() {
         ModularFluxCapacitor device
           = Device.Types.Get<ModularFluxCapacitor.Type>()
-            .DefaultModelBuilders()
+            .GetDefaultBuilders()
               .Make<ModularFluxCapacitor>((nameof(FluxCapacitor.FluxLevel), 30));
 
         ManufacturerDetails component =
-          Components<ManufacturerDetails>.BuilderFactory
+          Components<ManufacturerDetails>.Factory
             .Make();
 
         device.AddComponent(component);
@@ -61,7 +61,7 @@ namespace Meep.Tech.Data.Tests {
             );
 
         CapacitorData component =
-          Components<CapacitorData>.BuilderFactory
+          Components<CapacitorData>.Factory
             .Make();
 
         Assert.ThrowsException<ArgumentException>(() =>
@@ -76,7 +76,7 @@ namespace Meep.Tech.Data.Tests {
             .Make(out SafeModularDevice _);
 
         ManufacturerDetails component =
-          Components<ManufacturerDetails>.BuilderFactory.Make(
+          Components<ManufacturerDetails>.Factory.Make(
             (nameof(ManufacturerDetails.ManufacturerName), "test company"),
             ("ManufactureDate", new DateTime()));
 
@@ -92,11 +92,11 @@ namespace Meep.Tech.Data.Tests {
       public void RemoveComponentFromWriteableModel_Success() {
         DangerousModularDevice device
           = Device.Types.Get<DangerousModularDevice.Type>()
-            .DefaultModelBuilders()
+            .GetDefaultBuilders()
               .Make<DangerousModularDevice>();
 
         ManufacturerDetails component =
-          Components<ManufacturerDetails>.BuilderFactory
+          Components<ManufacturerDetails>.Factory
             .Make();
 
         device.AddComponent(component);

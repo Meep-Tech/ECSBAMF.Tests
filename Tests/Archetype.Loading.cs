@@ -69,7 +69,7 @@ namespace Meep.Tech.Data.Tests {
         Assert.AreEqual(
           Archetypes.DefaultUniverse.Enumerations.GetAllByType(typeof(FruitType)).Count()
           + Archetypes.DefaultUniverse.Enumerations.GetAllByType(typeof(TreeType)).Count(),
-          Archetypes.DefaultUniverse.Archetypes.TryToGetCollectionFor(typeof(Sticker.Type)).Count()
+          Archetypes.DefaultUniverse.Archetypes.TryToGetCollection(typeof(Sticker.Type)).Count()
         );
       }
     }

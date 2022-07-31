@@ -99,7 +99,7 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void ItemWithComponentsReserialization_Success() {
         ModularFluxCapacitor device = Device.Types.Get<ModularFluxCapacitor.Type>()
-          .DefaultModelBuilders()
+          .GetDefaultBuilders()
             .Make<ModularFluxCapacitor>(("FluxLevel", 1));
         device.AddNewComponent<ManufacturerDetails>(
           (nameof(ManufacturerDetails.ManufacturerName), "test")

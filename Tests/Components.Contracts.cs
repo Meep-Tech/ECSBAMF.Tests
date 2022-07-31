@@ -9,14 +9,14 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void TestContractExecuted_CapacitorFirst_Success() {
         var machine = Device.Types.Get<DangerousModularDevice.Type>()
-          .DefaultModelBuilders().Make<DangerousModularDevice>();
+          .GetDefaultBuilders().Make<DangerousModularDevice>();
 
-        CapacitorData capacitor = Components<CapacitorData>.BuilderFactory.Make(
+        CapacitorData capacitor = Components<CapacitorData>.Factory.Make(
           (nameof(CapacitorData.Value), 103)  
         );
         machine.AddComponent(capacitor);
 
-        CapacitorDetector detector = Components<CapacitorDetector>.BuilderFactory.Make();
+        CapacitorDetector detector = Components<CapacitorDetector>.Factory.Make();
         machine.AddComponent(detector);
 
         Assert.IsTrue(detector.CapacitorWasDetected);
@@ -25,12 +25,12 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void TestContractExecuted_CapacitorSecond_Success() {
         var machine = Device.Types.Get<DangerousModularDevice.Type>()
-          .DefaultModelBuilders().Make<DangerousModularDevice>();
+          .GetDefaultBuilders().Make<DangerousModularDevice>();
 
-        CapacitorDetector detector = Components<CapacitorDetector>.BuilderFactory.Make();
+        CapacitorDetector detector = Components<CapacitorDetector>.Factory.Make();
         machine.AddComponent(detector);
         
-        CapacitorData capacitor = Components<CapacitorData>.BuilderFactory.Make(
+        CapacitorData capacitor = Components<CapacitorData>.Factory.Make(
           (nameof(CapacitorData.Value), 103)  
         );
         machine.AddComponent(capacitor);
@@ -41,12 +41,12 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void TestContractExecuted_MultiComponentContracts_First_Success() {
         var machine = Device.Types.Get<DangerousModularDevice.Type>()
-          .DefaultModelBuilders().Make<DangerousModularDevice>();
+          .GetDefaultBuilders().Make<DangerousModularDevice>();
 
-        MultiComponentDetector detector = Components<MultiComponentDetector>.BuilderFactory.Make();
+        MultiComponentDetector detector = Components<MultiComponentDetector>.Factory.Make();
         machine.AddComponent(detector);
         
-        CapacitorData capacitor = Components<CapacitorData>.BuilderFactory.Make(
+        CapacitorData capacitor = Components<CapacitorData>.Factory.Make(
           (nameof(CapacitorData.Value), 103)  
         );
         machine.AddComponent(capacitor);
@@ -57,16 +57,16 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void TestContractExecuted_MultiComponentContracts_FirstAndSecond_Success() {
         var machine = Device.Types.Get<DangerousModularDevice.Type>()
-          .DefaultModelBuilders().Make<DangerousModularDevice>();
+          .GetDefaultBuilders().Make<DangerousModularDevice>();
 
-        MultiComponentDetector detector = Components<MultiComponentDetector>.BuilderFactory.Make();
+        MultiComponentDetector detector = Components<MultiComponentDetector>.Factory.Make();
         machine.AddComponent(detector);
         
-        CapacitorData capacitor = Components<CapacitorData>.BuilderFactory.Make(
+        CapacitorData capacitor = Components<CapacitorData>.Factory.Make(
           (nameof(CapacitorData.Value), 103)  
         );
         machine.AddComponent(capacitor);
-        DisplayComponent display = Components<DisplayComponent>.BuilderFactory.Make();
+        DisplayComponent display = Components<DisplayComponent>.Factory.Make();
         machine.AddComponent(display);
 
         Assert.IsTrue(detector.CapacitorWasDetected && detector.DisplayComponentWasDetected);
@@ -75,16 +75,16 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void TestContractExecuted_MultiComponentContracts_Second_Success() {
         var machine = Device.Types.Get<DangerousModularDevice.Type>()
-          .DefaultModelBuilders().Make<DangerousModularDevice>();
+          .GetDefaultBuilders().Make<DangerousModularDevice>();
         
-        MultiComponentDetector detector = Components<MultiComponentDetector>.BuilderFactory.Make();
+        MultiComponentDetector detector = Components<MultiComponentDetector>.Factory.Make();
         machine.AddComponent(detector);
         
-        CapacitorData capacitor = Components<CapacitorData>.BuilderFactory.Make(
+        CapacitorData capacitor = Components<CapacitorData>.Factory.Make(
           (nameof(CapacitorData.Value), 103)  
         );
         machine.AddComponent(capacitor);
-        DisplayComponent display = Components<DisplayComponent>.BuilderFactory.Make();
+        DisplayComponent display = Components<DisplayComponent>.Factory.Make();
         machine.AddComponent(display);
 
         Assert.IsTrue(detector.DisplayComponentWasDetected);
@@ -93,13 +93,13 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void TestContractExecuted_MultiComponentContracts_FirstAndSecond_DetectorLast_Success() {
         var machine = Device.Types.Get<DangerousModularDevice.Type>()
-          .DefaultModelBuilders().Make<DangerousModularDevice>();
+          .GetDefaultBuilders().Make<DangerousModularDevice>();
         
-        MultiComponentDetector detector = Components<MultiComponentDetector>.BuilderFactory.Make();
-        CapacitorData capacitor = Components<CapacitorData>.BuilderFactory.Make(
+        MultiComponentDetector detector = Components<MultiComponentDetector>.Factory.Make();
+        CapacitorData capacitor = Components<CapacitorData>.Factory.Make(
           (nameof(CapacitorData.Value), 103)  
         );
-        DisplayComponent display = Components<DisplayComponent>.BuilderFactory.Make();
+        DisplayComponent display = Components<DisplayComponent>.Factory.Make();
 
         machine.AddComponent(capacitor);
         machine.AddComponent(display);
@@ -112,13 +112,13 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void TestContractExecuted_MultiComponentContracts_FirstAndSecond_DetectorMiddle_Success() {
         var machine = Device.Types.Get<DangerousModularDevice.Type>()
-          .DefaultModelBuilders().Make<DangerousModularDevice>();
+          .GetDefaultBuilders().Make<DangerousModularDevice>();
         
-        MultiComponentDetector detector = Components<MultiComponentDetector>.BuilderFactory.Make();
-        CapacitorData capacitor = Components<CapacitorData>.BuilderFactory.Make(
+        MultiComponentDetector detector = Components<MultiComponentDetector>.Factory.Make();
+        CapacitorData capacitor = Components<CapacitorData>.Factory.Make(
           (nameof(CapacitorData.Value), 103)  
         );
-        DisplayComponent display = Components<DisplayComponent>.BuilderFactory.Make();
+        DisplayComponent display = Components<DisplayComponent>.Factory.Make();
 
         machine.AddComponent(capacitor);
         machine.AddComponent(detector);
@@ -131,9 +131,9 @@ namespace Meep.Tech.Data.Tests {
       [TestMethod]
       public void TestContractNotExecuted_CapacitorNotAdded_Success() {
         var machine = Device.Types.Get<DangerousModularDevice.Type>()
-          .DefaultModelBuilders().Make<DangerousModularDevice>();
+          .GetDefaultBuilders().Make<DangerousModularDevice>();
 
-        CapacitorDetector detector = Components<CapacitorDetector>.BuilderFactory.Make();
+        CapacitorDetector detector = Components<CapacitorDetector>.Factory.Make();
         machine.AddComponent(detector);
 
         Assert.IsFalse(detector.CapacitorWasDetected);

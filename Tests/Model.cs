@@ -14,7 +14,7 @@ namespace Meep.Tech.Data.Tests {
 
     [TestMethod]
     public void ConstructionWithoutNeededParameter_Failure() {
-      Assert.ThrowsException<IModel.Builder.Param.MissingException>(() => {
+      Assert.ThrowsException<IModel.IBuilder.Param.MissingException>(() => {
         Device.Types.Get<ModularFluxCapacitor.Type>()
           .Make();
       });

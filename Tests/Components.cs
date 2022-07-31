@@ -8,7 +8,7 @@ namespace Meep.Tech.Data.Tests {
 
     [TestMethod]
     public void SerializeArchetypeComponent() {
-      Capacitor capacitor = Components<Capacitor>.BuilderFactory.Make(
+      Capacitor capacitor = Components<Capacitor>.Factory.Make(
         (nameof(Capacitor.DefaultCapacityValue), 103)  
       );
 
@@ -27,9 +27,9 @@ namespace Meep.Tech.Data.Tests {
     [TestMethod]
     public void IDoOnAdd_AfterTrue_Success() {
       var machine = Device.Types.Get<DangerousModularDevice.Type>()
-        .DefaultModelBuilders().Make<DangerousModularDevice>();
+        .GetDefaultBuilders().Make<DangerousModularDevice>();
 
-      DisplayComponent component = Components<DisplayComponent>.BuilderFactory.Make();
+      DisplayComponent component = Components<DisplayComponent>.Factory.Make();
       machine.AddComponent(component);
 
       Assert.IsTrue(component.WasInitialized);
@@ -38,9 +38,9 @@ namespace Meep.Tech.Data.Tests {
     [TestMethod]
     public void IDoOnAdd_BeforeFalse_Success() {
       var machine = Device.Types.Get<DangerousModularDevice.Type>()
-        .DefaultModelBuilders().Make<DangerousModularDevice>();
+        .GetDefaultBuilders().Make<DangerousModularDevice>();
 
-      DisplayComponent component = Components<DisplayComponent>.BuilderFactory.Make();
+      DisplayComponent component = Components<DisplayComponent>.Factory.Make();
 
       Assert.IsFalse(component.WasInitialized);
     }
